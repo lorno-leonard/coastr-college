@@ -1,0 +1,12 @@
+{
+	// Editor config
+	"editor.formatOnSave": true,
+	"editor.tabSize": 2,
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"source.organizeImports": true
+	},
+	// ESLINT config
+	"eslint.alwaysShowStatus": true,
+	"eslint.format.enable": true
+}
