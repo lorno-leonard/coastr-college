@@ -4,7 +4,6 @@ const { Schema } = mongoose;
 
 const schema = new Schema(
 	{
-		college_id: { type: Schema.Types.ObjectId, ref: 'College', required: true },
 		branch_id: { type: Schema.Types.ObjectId, ref: 'Branch', required: true },
 		student_id: { type: Schema.Types.ObjectId, ref: 'Student', required: true }
 	},
