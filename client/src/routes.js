@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
+import BranchDetailsPage from './containers/BranchDetailsPage';
 import BranchesPage from './containers/BranchesPage';
 import CollegeDetailsPage from './containers/CollegeDetailsPage';
 import CollegesPage from './containers/CollegesPage';
@@ -28,8 +29,8 @@ const routes = [
 
 	// Branches
 	{ path: '/branches', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: BranchesPage },
-	// { path: '/colleges/create', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage },
-	// { path: '/colleges/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage },
+	{ path: '/branches/create', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: BranchDetailsPage },
+	{ path: '/branches/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: BranchDetailsPage },
 
 	// Students
 	{ path: '/students', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentsPage },

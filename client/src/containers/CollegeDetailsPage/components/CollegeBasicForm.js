@@ -13,6 +13,7 @@ let CollegeBasicForm = props => {
 		loadingSubmit,
 		onSubmit,
 		loading,
+		// redux-form props
 		handleSubmit,
 		pristine,
 		submitting,

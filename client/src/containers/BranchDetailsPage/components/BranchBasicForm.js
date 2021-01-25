@@ -1,18 +1,22 @@
+import _ from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import {
 	renderFormInput,
+	renderFormSelect,
 	validateRequired
 } from '../../../helpers/redux_form';
 
 
-let StudentBasicForm = props => {
+let BranchBasicForm = props => {
 	const {
 		loadingSubmit,
 		onSubmit,
 		loading,
+		colleges,
+		loadingColleges,
 		// redux-form props
 		handleSubmit,
 		pristine,
@@ -20,14 +24,33 @@ let StudentBasicForm = props => {
 		invalid
 	} = props;
 
+	const optionColleges = _.map(colleges, college => ({
+		key: _.get(college, '_id'),
+		value: _.get(college, '_id'),
+		text: _.get(college, 'name')
+	}));
+
 	return (
 		<div className="bt-content-padded">
 			<Grid>
 				<Grid.Row>
 					<Grid.Column width={9}>
 						<Segment>
-							<h4>Student Information</h4>
+							<h4>College Information</h4>
 							<Form loading={loading || loadingSubmit}>
+								<Form.Group widths="equal">
+									<Form.Field>
+										<Field
+											component={renderFormSelect}
+											validate={[validateRequired]}
+											name="college_id"
+											placeholder="College"
+											disabled={loadingColleges}
+											options={optionColleges}
+										/>
+										<label>College</label>
+									</Form.Field>
+								</Form.Group>
 								<Form.Group widths="equal">
 									<Form.Field>
 										<Field
@@ -55,16 +78,20 @@ let StudentBasicForm = props => {
 	);
 };
 
-StudentBasicForm = reduxForm({
-	form: 'StudentBasicForm'
-})(StudentBasicForm);
+BranchBasicForm = reduxForm({
+	form: 'BranchBasicForm'
+})(BranchBasicForm);
 
-StudentBasicForm = connect(
+BranchBasicForm = connect(
 	state => {
+		const { branch } = state.BranchDetailsPage;
 		return({
-			initialValues: state.StudentDetailsPage.student
+			initialValues: {
+				name: _.get(branch, 'name'),
+				college_id: _.get(branch, 'college_id._id')
+			}
 		});
 	}
-)(StudentBasicForm);
+)(BranchBasicForm);
 
-export default StudentBasicForm;
+export default BranchBasicForm;

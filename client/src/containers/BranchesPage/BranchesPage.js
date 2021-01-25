@@ -36,26 +36,27 @@ class BranchesPage extends Component {
 		if (_.isEmpty(branches)) {
 			return (
 				<Table.Row>
-					<Table.Cell>No Branchs</Table.Cell>
+					<Table.Cell>No Branches</Table.Cell>
 				</Table.Row>
 			);
 		} else {
-			return branches.map((college, index) => {
+			return branches.map((branch, index) => {
 				return (
 					<Table.Row
 						key={index}
 						onClick={() =>
-							this.props.history.push(`/branches/id/basic?id=${college._id}`)
+							this.props.history.push(`/branches/id/basic?id=${branch._id}`)
 						}
 					>
-						<Table.Cell>{_.get(college, 'name')}</Table.Cell>
+						<Table.Cell>{_.get(branch, 'name')}</Table.Cell>
+						<Table.Cell>{_.get(branch, 'college_id.name')}</Table.Cell>
 						<Table.Cell textAlign="center">
 							<Icon
 								link
 								name="edit"
 								size="large"
 								onClick={() =>
-									this.props.history.push(`/branches/id/basic?id=${college._id}`)
+									this.props.history.push(`/branches/id/basic?id=${branch._id}`)
 								}
 							/>
 						</Table.Cell>
@@ -142,6 +143,7 @@ class BranchesPage extends Component {
 											<Table.Header>
 												<Table.Row>
 													<Table.HeaderCell>Name</Table.HeaderCell>
+													<Table.HeaderCell>College</Table.HeaderCell>
 													<Table.HeaderCell textAlign="center">Actions</Table.HeaderCell>
 												</Table.Row>
 											</Table.Header>

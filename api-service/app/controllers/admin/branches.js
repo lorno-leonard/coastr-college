@@ -25,6 +25,7 @@ module.exports = {
 			.limit(limit)
 			.skip(skip)
 			.sort({ name: 1 })
+			.populate('college_id')
 			.lean();
 
 		ctx.body = ResponseHelper.generateResponse(200, 'Success', {

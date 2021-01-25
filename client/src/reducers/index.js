@@ -1,6 +1,7 @@
 import { connectRouter } from 'connected-react-router';
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import BranchDetailsPage from './BranchDetailsPage';
 import BranchesPage from './BranchesPage';
 import CollegeDetailsPage from './CollegeDetailsPage';
 import CollegesPage from './CollegesPage';
@@ -19,5 +20,6 @@ export default history =>
 		CollegeDetailsPage,
 		StudentsPage,
 		StudentDetailsPage,
-		BranchesPage
+		BranchesPage,
+		BranchDetailsPage
 	});
