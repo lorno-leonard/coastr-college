@@ -5,6 +5,7 @@ import CollegesPage from './containers/CollegesPage';
 import LoginPage from './containers/LoginPage';
 import LogoutPage from './containers/LogoutPage';
 import SignupPage from './containers/SignupPage';
+import StudentDetailsPage from './containers/StudentDetailsPage';
 import StudentsPage from './containers/StudentsPage';
 import UnauthorizedPage from './containers/UnauthorizedPage';
 import AuthHelper from './helpers/auth';
@@ -25,7 +26,9 @@ const routes = [
 	{ path: '/colleges/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage },
 
 	// Students
-	{ path: '/students', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentsPage }
+	{ path: '/students', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentsPage },
+	{ path: '/students/create', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentDetailsPage },
+	{ path: '/students/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentDetailsPage }
 ];
 
 function getRedirectedPath(location) {
@@ -107,7 +110,7 @@ export class Routes extends Component {
 						);
 					}
 				})}
-				<Route render={props => (AuthHelper.isAuthenticated() ? <Redirect to={'/reports'} /> : <Redirect to={getRedirectedPath(props.location)} />)} />
+				<Route render={props => (AuthHelper.isAuthenticated() ? <Redirect to={'/colleges'} /> : <Redirect to={getRedirectedPath(props.location)} />)} />
 			</Switch>
 		);
 	}

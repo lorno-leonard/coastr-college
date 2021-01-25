@@ -9,7 +9,7 @@ export default {
 		const res = await request.get(`/admin/students/${id}`);
 		return res;
 	},
-	async creatStudent(body) {
+	async createStudent(body) {
 		const res = await request.post(`/admin/students`, body);
 		return res;
 	},

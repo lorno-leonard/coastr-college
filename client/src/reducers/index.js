@@ -5,6 +5,7 @@ import CollegeDetailsPage from './CollegeDetailsPage';
 import CollegesPage from './CollegesPage';
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
+import StudentDetailsPage from './StudentDetailsPage';
 import StudentsPage from './StudentsPage';
 
 export default history =>
@@ -15,5 +16,6 @@ export default history =>
 		SignupPage,
 		CollegesPage,
 		CollegeDetailsPage,
-		StudentsPage
+		StudentsPage,
+		StudentDetailsPage
 	});

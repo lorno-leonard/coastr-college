@@ -2,21 +2,21 @@ import { push } from 'connected-react-router';
 import * as ActionTypes from '../constants/ActionTypes';
 import API from '../helpers/api';
 
-export function getCollegeById(id) {
+export function getStudentById(id) {
 	return async dispatch => {
 
 		dispatch({
-			type: ActionTypes.GET_COLLEGE_BASIC_REQUEST,
+			type: ActionTypes.GET_STUDENT_BASIC_REQUEST,
 			payload: {
 				loading: true
 			}
 		});
 
-		const response = await API.colleges.getCollegeById(id);
+		const response = await API.students.getStudentById(id);
 
 		if (response.meta.code !== 200) {
 			return dispatch({
-				type: ActionTypes.GET_COLLEGE_BASIC_ERROR,
+				type: ActionTypes.GET_STUDENT_BASIC_ERROR,
 				payload: {
 					meta: response.meta,
 					loading: false
@@ -24,12 +24,12 @@ export function getCollegeById(id) {
 			});
 		}
 
-		const { college } = response.data;
+		const { student } = response.data;
 
 		dispatch({
-			type: ActionTypes.GET_COLLEGE_BASIC_SUCCESS,
+			type: ActionTypes.GET_STUDENT_BASIC_SUCCESS,
 			payload: {
-				college,
+				student,
 				loading: false
 			}
 		});
@@ -38,32 +38,32 @@ export function getCollegeById(id) {
 
 export function onSubmit(fields){
 	return async (dispatch, getState) => {
-		const { college } = getState().CollegeDetailsPage;
+		const { student } = getState().StudentDetailsPage;
 
 		dispatch({
-			type: ActionTypes.SUBMIT_COLLEGE_DETAIL_REQUEST,
+			type: ActionTypes.SUBMIT_STUDENT_DETAIL_REQUEST,
 			payload: {
 				loadingSubmit: true
 			}
 		});
 
 		const body = {
-			college: {
+			student: {
 				...fields
 			}
 		};
 
 		let response;
-		if (college) {
-			body.college.updated_at = fields.updated_at;
-			response = await API.colleges.updateCollegeById(college._id, body);
+		if (student) {
+			body.student.updated_at = fields.updated_at;
+			response = await API.students.updateStudentById(student._id, body);
 		} else {
-			response = await API.colleges.createCollege(body);
+			response = await API.students.createStudent(body);
 		}
 
 		if (response.meta.code !== 200) {
 			dispatch({
-				type: ActionTypes.SUBMIT_COLLEGE_DETAIL_ERROR,
+				type: ActionTypes.SUBMIT_STUDENT_DETAIL_ERROR,
 				payload: {
 					meta: response.meta,
 					loadingSubmit: false
@@ -72,18 +72,18 @@ export function onSubmit(fields){
 			return;
 		}
 
-		const { college: newCollege } = response.data;
+		const { student: newStudent } = response.data;
 
 		dispatch({
-			type: ActionTypes.SUBMIT_COLLEGE_DETAIL_SUCCESS,
+			type: ActionTypes.SUBMIT_STUDENT_DETAIL_SUCCESS,
 			payload: {
 				meta: response.meta,
-				college: newCollege,
+				student: newStudent,
 				loadingSubmit: false
 			}
 		});
-		if (!college) {
-			dispatch(push(`/colleges/id/basic?id=${newCollege._id}`));
+		if (!student) {
+			dispatch(push(`/students/id/basic?id=${newStudent._id}`));
 		}
 
 	};
@@ -92,7 +92,7 @@ export function onSubmit(fields){
 export function resetMeta() {
 	return async dispatch => {
 		dispatch({
-			type: ActionTypes.RESET_COLLEGE_BASIC_META
+			type: ActionTypes.RESET_STUDENT_BASIC_META
 		});
 	};
 }
@@ -100,7 +100,7 @@ export function resetMeta() {
 export function reset() {
 	return async dispatch => {
 		dispatch({
-			type: ActionTypes.RESET_COLLEGE_BASIC
+			type: ActionTypes.RESET_STUDENT_BASIC
 		});
 	};
 }

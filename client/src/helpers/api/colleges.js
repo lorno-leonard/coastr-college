@@ -9,7 +9,7 @@ export default {
 		const res = await request.get(`/admin/colleges/${id}`);
 		return res;
 	},
-	async creatCollege(body) {
+	async createCollege(body) {
 		const res = await request.post(`/admin/colleges`, body);
 		return res;
 	},

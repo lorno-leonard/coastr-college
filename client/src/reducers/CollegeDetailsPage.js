@@ -2,7 +2,7 @@ import * as ActionTypes from '../constants/ActionTypes';
 
 const initialState = {
 	loading: false,
-	restaurant: null,
+	college: null,
 	loadingSubmit: false
 };
 
