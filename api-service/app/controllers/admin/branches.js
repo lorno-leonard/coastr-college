@@ -129,7 +129,7 @@ module.exports = {
 
 		const query = { branch_id: id };
 		const total = await Branch.countDocuments(query);
-		const branch_students = await BranchStudent.find(query)
+		const students = await BranchStudent.find(query)
 			.limit(limit)
 			.skip(skip)
 			.populate('student_id')
@@ -139,8 +139,8 @@ module.exports = {
 			total,
 			page,
 			limit,
-			count: branch_students.length,
-			branch_students
+			count: students.length,
+			students
 		});
 	},
 	updateBranchStudents: async ctx => {
