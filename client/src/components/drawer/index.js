@@ -8,6 +8,10 @@ export class Drawer extends Component {
 		switch (true) {
 			case /\/colleges/.test(pathname):
 				return 'colleges';
+			case /\/students/.test(pathname):
+				return 'students';
+			case /\/branches/.test(pathname):
+				return 'branches';
 			default:
 				return 'colleges';
 		}
@@ -33,7 +37,7 @@ export class Drawer extends Component {
 					<Menu.Item>
 						<Menu.Header>
 							<Icon
-								name="wechat"
+								name="building"
 								className="bt-drawer-header-icon"
 							/>
 							Colleges
@@ -45,6 +49,48 @@ export class Drawer extends Component {
 								onClick={this.handleItemClick}
 								as={Link}
 								to="/colleges"
+							>
+								All
+							</Menu.Item>
+						</Menu.Menu>
+					</Menu.Item>
+
+					<Menu.Item>
+						<Menu.Header>
+							<Icon
+								name="users"
+								className="bt-drawer-header-icon"
+							/>
+							Students
+						</Menu.Header>
+						<Menu.Menu>
+							<Menu.Item
+								name="students"
+								active={activeItem === 'students'}
+								onClick={this.handleItemClick}
+								as={Link}
+								to="/students"
+							>
+								All
+							</Menu.Item>
+						</Menu.Menu>
+					</Menu.Item>
+
+					<Menu.Item>
+						<Menu.Header>
+							<Icon
+								name="building"
+								className="bt-drawer-header-icon"
+							/>
+							Branches
+						</Menu.Header>
+						<Menu.Menu>
+							<Menu.Item
+								name="branches"
+								active={activeItem === 'branches'}
+								onClick={this.handleItemClick}
+								as={Link}
+								to="/branches"
 							>
 								All
 							</Menu.Item>

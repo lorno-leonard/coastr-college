@@ -4,6 +4,7 @@ import { withAlert } from 'react-alert';
 import { compose } from 'redux';
 import { Breadcrumb, Divider, Icon } from 'semantic-ui-react';
 import UrlParse from 'url-parse';
+import DetailMenu from '../../components/DetailMenu';
 import Loading from '../../components/loading';
 import CollegeBasicForm from './components/CollegeBasicForm';
 
@@ -49,9 +50,13 @@ class CollegeDetailsPage extends Component {
 			);
 		}
 
+		const { id } = query;
 		const sections = [
-			{ key: '/colleges', content: 'Colleges' },
+			{ key: '/colleges', content: 'Colleges', link: true, onClick: () => history.push('/colleges') },
 			{ key: '', content: !query.id ? 'New' : `Edit ${college.name}`, active: true }
+		];
+		const tabs = [
+			{ title: 'Basic', path: `/basic?id=${id}` }
 		];
 
 		return (
@@ -72,6 +77,11 @@ class CollegeDetailsPage extends Component {
 					</div>
 					<Divider />
 				</React.Fragment>
+				<DetailMenu
+					tabs={tabs}
+					location={location}
+					history={history}
+				/>
 				<CollegeBasicForm
 					{...this.props}
 					college={college}

@@ -5,6 +5,7 @@ import CollegesPage from './containers/CollegesPage';
 import LoginPage from './containers/LoginPage';
 import LogoutPage from './containers/LogoutPage';
 import SignupPage from './containers/SignupPage';
+import StudentsPage from './containers/StudentsPage';
 import UnauthorizedPage from './containers/UnauthorizedPage';
 import AuthHelper from './helpers/auth';
 /* layouts */
@@ -21,7 +22,10 @@ const routes = [
 	{ path: '/', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegesPage },
 	{ path: '/colleges', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegesPage },
 	{ path: '/colleges/create', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage },
-	{ path: '/colleges/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage }
+	{ path: '/colleges/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage },
+
+	// Students
+	{ path: '/students', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentsPage }
 ];
 
 function getRedirectedPath(location) {

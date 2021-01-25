@@ -5,6 +5,7 @@ import CollegeDetailsPage from './CollegeDetailsPage';
 import CollegesPage from './CollegesPage';
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
+import StudentsPage from './StudentsPage';
 
 export default history =>
 	combineReducers({
@@ -13,5 +14,6 @@ export default history =>
 		LoginPage,
 		SignupPage,
 		CollegesPage,
-		CollegeDetailsPage
+		CollegeDetailsPage,
+		StudentsPage
 	});
