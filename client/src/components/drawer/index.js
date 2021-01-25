@@ -58,27 +58,6 @@ export class Drawer extends Component {
 					<Menu.Item>
 						<Menu.Header>
 							<Icon
-								name="users"
-								className="bt-drawer-header-icon"
-							/>
-							Students
-						</Menu.Header>
-						<Menu.Menu>
-							<Menu.Item
-								name="students"
-								active={activeItem === 'students'}
-								onClick={this.handleItemClick}
-								as={Link}
-								to="/students"
-							>
-								All
-							</Menu.Item>
-						</Menu.Menu>
-					</Menu.Item>
-
-					<Menu.Item>
-						<Menu.Header>
-							<Icon
 								name="building"
 								className="bt-drawer-header-icon"
 							/>
@@ -91,6 +70,27 @@ export class Drawer extends Component {
 								onClick={this.handleItemClick}
 								as={Link}
 								to="/branches"
+							>
+								All
+							</Menu.Item>
+						</Menu.Menu>
+					</Menu.Item>
+
+					<Menu.Item>
+						<Menu.Header>
+							<Icon
+								name="users"
+								className="bt-drawer-header-icon"
+							/>
+							Students
+						</Menu.Header>
+						<Menu.Menu>
+							<Menu.Item
+								name="students"
+								active={activeItem === 'students'}
+								onClick={this.handleItemClick}
+								as={Link}
+								to="/students"
 							>
 								All
 							</Menu.Item>
