@@ -79,7 +79,7 @@ module.exports = {
 		}
 
 		// Check name
-		if (name && college.name && name.en !== college.name && (await exists({ name }, College))) {
+		if (name && college.name && name !== college.name && (await exists({ name }, College))) {
 			ctx.body = ResponseHelper.generateResponse(403, `College with name ${name} already exists!`);
 			return;
 		}
