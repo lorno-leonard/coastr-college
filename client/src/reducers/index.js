@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import BranchDetailsPage from './BranchDetailsPage';
 import BranchesPage from './BranchesPage';
+import BranchStudentsPage from './BranchStudentsPage';
 import CollegeDetailsPage from './CollegeDetailsPage';
 import CollegesPage from './CollegesPage';
 import LoginPage from './LoginPage';
@@ -21,5 +22,6 @@ export default history =>
 		StudentsPage,
 		StudentDetailsPage,
 		BranchesPage,
-		BranchDetailsPage
+		BranchDetailsPage,
+		BranchStudentsPage
 	});

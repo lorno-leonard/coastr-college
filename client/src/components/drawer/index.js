@@ -6,6 +6,8 @@ import './index.scss';
 export class Drawer extends Component {
 	getActiveItem({ pathname, search }) {
 		switch (true) {
+			case /\/branches\/id\/students/.test(pathname):
+				return 'branches';
 			case /\/colleges/.test(pathname):
 				return 'colleges';
 			case /\/students/.test(pathname):

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect, Route, Switch, withRouter } from 'react-router-dom';
 import BranchDetailsPage from './containers/BranchDetailsPage';
 import BranchesPage from './containers/BranchesPage';
+import BranchStudentsPage from './containers/BranchStudentsPage';
 import CollegeDetailsPage from './containers/CollegeDetailsPage';
 import CollegesPage from './containers/CollegesPage';
 import LoginPage from './containers/LoginPage';
@@ -25,17 +26,18 @@ const routes = [
 	{ path: '/', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegesPage },
 	{ path: '/colleges', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegesPage },
 	{ path: '/colleges/create', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage },
-	{ path: '/colleges/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage },
+	{ path: '/colleges/id/basic', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: CollegeDetailsPage },
 
 	// Branches
 	{ path: '/branches', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: BranchesPage },
 	{ path: '/branches/create', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: BranchDetailsPage },
-	{ path: '/branches/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: BranchDetailsPage },
+	{ path: '/branches/id/basic', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: BranchDetailsPage },
+	{ path: '/branches/id/students', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: BranchStudentsPage },
 
 	// Students
 	{ path: '/students', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentsPage },
 	{ path: '/students/create', exact: true, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentDetailsPage },
-	{ path: '/students/id/', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentDetailsPage }
+	{ path: '/students/id/basic', exact: false, isPrivate: true, Layout: NavigationLayout, layoutClass: 'fill', Component: StudentDetailsPage }
 ];
 
 function getRedirectedPath(location) {
