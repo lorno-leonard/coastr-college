@@ -14,5 +14,11 @@ module.exports = {
 	'GET /admin/colleges': schemas.admin.colleges.getColleges,
 	'GET /admin/colleges/:id': schemas.admin.colleges.getCollegeById,
 	'POST /admin/colleges': schemas.admin.colleges.createCollege,
-	'PATCH /admin/colleges/:id': schemas.admin.colleges.updateCollegeById
+	'PATCH /admin/colleges/:id': schemas.admin.colleges.updateCollegeById,
+
+	// /admin/students
+	'GET /admin/students': schemas.admin.students.getStudents,
+	'GET /admin/students/:id': schemas.admin.students.getStudentById,
+	'POST /admin/students': schemas.admin.students.createStudent,
+	'PATCH /admin/students/:id': schemas.admin.students.updateStudentById
 };
