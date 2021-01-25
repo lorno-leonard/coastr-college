@@ -16,5 +16,5 @@ RUN npm ci
 # Bundle app source
 COPY . .
 
-EXPOSE 4000
-CMD [ "node", "index.js" ]
+EXPOSE 4100
+CMD [ "npm", "start" ]

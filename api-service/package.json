@@ -1,14 +1,9 @@
 {
-  "name": "api",
+  "name": "api-service",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "start:dev": "NODE_ENV=development nodemon index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@koa/cors": "^3.1.0",
     "ajv": "^6.12.0",

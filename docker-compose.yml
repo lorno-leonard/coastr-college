@@ -1,4 +1,4 @@
-version: "3"
+version: 3
 
 services:
   api-service:
@@ -12,26 +12,24 @@ services:
     environment:
       - NODE_ENV=production
 
-  # app:
-  #   container_name: "coastr-college-app"
-  #   build:
-  #     context: "."
-  #     dockerfile: "./app/Dockerfile"
-  #   depends_on:
-  #     - api
-  #   volumes:
-  #     - ./app:/usr/app
-  #   ports:
-  #     - "4100:4100"
+  client:
+    build: ./client
+    container_name: coastr-college-client
+    ports:
+      - 4100:4100
+    depends_on:
+      - api
+    environment:
+      - NODE_ENV=production
 
   mongo:
-    container_name: "coastr-college-mongo"
+    container_name: coastr-college-mongo
     image: mongo
     ports:
-      - "4001:27017"
+      - 4001:27017
 
   redis:
-    container_name: "coastr-college-redis"
+    container_name: coastr-college-redis
     image: redis
     ports:
-      - "4002:6379"
+      - 4002:6379

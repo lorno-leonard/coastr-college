@@ -1,0 +1,15 @@
+[
+	{
+		"name": "hkust-inspection-admin",
+		"run_as_user": "ustuser",
+		"cwd": "/home/ustuser/hkust-inspection-admin",
+		"script": "./server/index.js",
+		"log_date_format": "YYYY-MM-DD HH:mm:ss:SSS Z",
+		"env": {
+			"NODE_ENV": "testing"
+		},
+		"error_file": "/home/ustuser/hkust-inspection-admin/log/pm2-resource-error.log",
+		"out_file": "/home/ustuser/hkust-inspection-admin/log/pm2-resource-output.log",
+		"exec_mode": "fork_mode"
+	}
+]
