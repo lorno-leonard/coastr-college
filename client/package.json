@@ -6,7 +6,8 @@
 		"start:development": "NODE_ENV=development PORT=4100 node scripts/start.js",
 		"build": "node scripts/build.js",
 		"test": "node scripts/test.js",
-		"build:production": "PUBLIC_URL=https://localhost:4100 NODE_ENV=production npm run build"
+		"build:development": "PUBLIC_URL=http://localhost:4100 NODE_ENV=development npm run build",
+		"build:production": "PUBLIC_URL=http://localhost:4100 NODE_ENV=production npm run build"
 	},
 	"dependencies": {
 		"@babel/core": "7.4.3",

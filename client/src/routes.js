@@ -4,6 +4,7 @@ import CollegeDetailsPage from './containers/CollegeDetailsPage';
 import CollegesPage from './containers/CollegesPage';
 import LoginPage from './containers/LoginPage';
 import LogoutPage from './containers/LogoutPage';
+import SignupPage from './containers/SignupPage';
 import UnauthorizedPage from './containers/UnauthorizedPage';
 import AuthHelper from './helpers/auth';
 /* layouts */
@@ -12,6 +13,7 @@ import NavigationLayout from './layouts/navigation-layout';
 
 const routes = [
 	{ path: '/unauthorized', exact: true, isPrivate: false, Layout: BasicLayout, layoutClass: 'narrow', Component: UnauthorizedPage },
+	{ path: '/signup', exact: true, isPrivate: false, Layout: BasicLayout, layoutClass: 'narrow', Component: SignupPage },
 	{ path: '/login', exact: true, isPrivate: false, Layout: BasicLayout, layoutClass: 'narrow', Component: LoginPage },
 	{ path: '/logout', exact: true, isPrivate: false, Layout: BasicLayout, layoutClass: 'narrow', Component: LogoutPage },
 

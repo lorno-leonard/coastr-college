@@ -5,7 +5,6 @@ import { Button, Form, Grid, Message } from 'semantic-ui-react';
 import Loading from '../../components/loading';
 import GeneralHelper from '../../helpers/general';
 
-
 class LoginPage extends Component {
 	componentWillUnmount() {
 		this.props.reset();
@@ -35,7 +34,7 @@ class LoginPage extends Component {
 	}
 
 	render() {
-		const { pageProps } = this.props;
+		const { pageProps, history } = this.props;
 		const { email, password, loading, error } = pageProps;
 
 		if (!pageProps.showLoginForm) {
@@ -57,11 +56,12 @@ class LoginPage extends Component {
 				stackable
 				className="with-padding"
 			>
-				<Grid.Row>
-					<Grid.Column>
+				<Grid.Row centered>
+					<Grid.Column width={6}>
 						<Form
 							error={error !== ''}
 							onSubmit={this.onSubmit}
+							style={{ marginBottom: 10 }}
 						>
 							<Form.Group widths="equal">
 								<Form.Input
@@ -92,13 +92,21 @@ class LoginPage extends Component {
 								loading={loading}
 								disabled={loading}
 							/>
-							{error && (
-								<Message
-									error
-									content={error}
-								/>
-							)}
 						</Form>
+						<Button
+							content="Sign Up"
+							secondary
+							fluid
+							loading={loading}
+							disabled={loading}
+							onClick={() => history.push('/signup')}
+						/>
+						{error && (
+							<Message
+								error
+								content={error}
+							/>
+						)}
 					</Grid.Column>
 				</Grid.Row>
 			</Grid>

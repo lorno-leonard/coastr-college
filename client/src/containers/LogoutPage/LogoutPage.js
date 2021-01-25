@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import Loading from '../../components/loading';
 
 class LogoutPage extends Component {
 	componentDidMount() {
 		this.props.logout();
 	}
+
 	render() {
 		return <Loading />;
 	}

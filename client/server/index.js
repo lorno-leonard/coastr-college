@@ -13,8 +13,8 @@ app.use(helmet.contentSecurityPolicy({
 		frameAncestors: ["'none'"]
 	}
 }));
-app.use('/wci/admin', express.static(path.join(__dirname, 'build')));
-app.get('/wci/admin/*', function(req, res) {
+app.use('/', express.static(path.join(__dirname, 'build')));
+app.get('/*', function(req, res) {
 	res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 

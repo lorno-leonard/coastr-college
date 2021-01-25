@@ -16,5 +16,8 @@ RUN npm ci
 # Bundle app source
 COPY . .
 
+# Build
+RUN npm run build:production
+
 EXPOSE 4100
-CMD [ "npm", "start" ]
+CMD [ "node", "server", "index.js" ]
