@@ -5,7 +5,7 @@ import { Field, formValueSelector, reduxForm } from 'redux-form';
 import { Button, Form, Icon, Table } from 'semantic-ui-react';
 import { renderFormSelect } from '../../../helpers/redux_form';
 
-const handleOnAddRestaurant = ({
+const handleOnAddStudent = ({
 	fields,
 	change,
 	addStudent,
@@ -47,7 +47,7 @@ let BranchStudentInput = ({
 					<Field
 						component={renderFormSelect}
 						name="add_student"
-						placeholder="Restaurant"
+						placeholder="Student"
 						width={8}
 						options={optionStudents}
 						disabled={loadingInitialValue || loadingStudents}
@@ -55,7 +55,7 @@ let BranchStudentInput = ({
 					<Form.Field>
 						<Button
 							primary
-							onClick={() => handleOnAddRestaurant({
+							onClick={() => handleOnAddStudent({
 								fields,
 								change,
 								students,
