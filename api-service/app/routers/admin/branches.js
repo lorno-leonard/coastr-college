@@ -15,5 +15,7 @@ router.get('/', middlewares.ajv, controllers.admin.branches.getBranches);
 router.get('/:id', middlewares.ajv, controllers.admin.branches.getBranchById);
 router.post('/', middlewares.ajv, controllers.admin.branches.createBranch);
 router.patch('/:id', middlewares.ajv, controllers.admin.branches.updateBranchById);
+router.get('/:id/students', middlewares.ajv, controllers.admin.branches.getBranchStudents);
+router.patch('/:id/students', middlewares.ajv, controllers.admin.branches.updateBranchStudents);
 
 module.exports = router;

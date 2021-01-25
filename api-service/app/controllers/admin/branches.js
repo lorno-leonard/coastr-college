@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 const GeneralHelper = require('../../helpers/general');
 const ResponseHelper = require('../../helpers/response');
 const ExistenseHelper = require('../../helpers/existence');
@@ -86,7 +88,7 @@ module.exports = {
 			ctx.body = ResponseHelper.generateNotFoundResponse('Branch');
 			return;
 		}
-		console.log({ branch });
+
 		// Check name
 		if (name && branch.name && name !== branch.name && (await exists({ name, college_id: branch.college_id.toString() }, Branch))) {
 			ctx.body = ResponseHelper.generateResponse(403, `Branch with name ${name} already exists!`);
@@ -104,5 +106,71 @@ module.exports = {
 		await branch.save();
 
 		ctx.body = ResponseHelper.generateResponse(200, 'Success', { branch });
+	},
+	getBranchStudents: async ctx => {
+		const {
+			id,
+			page,
+			limit
+		} = ctx.params;
+		const skip = limit * (page - 1);
+		const { models } = ctx.custom;
+
+		const Branch = models.branch;
+		const BranchStudent = models.branch_student;
+
+		// Check branch
+		const branch = await Branch.findById(id);
+		if (!branch) {
+			ctx.body = ResponseHelper.generateNotFoundResponse('Branch');
+			return;
+		}
+
+		const query = { branch_id: id };
+		const total = await Branch.countDocuments(query);
+		const branch_students = await BranchStudent.find(query)
+			.limit(limit)
+			.skip(skip)
+			.populate('student_id')
+			.lean();
+
+		ctx.body = ResponseHelper.generateResponse(200, 'Success', {
+			total,
+			page,
+			limit,
+			count: branch_students.length,
+			branch_students
+		});
+	},
+	updateBranchStudents: async ctx => {
+		const { id } = ctx.params;
+		const { student_ids } = ctx.request.body;
+		const { models } = ctx.custom;
+
+		const Branch = models.branch;
+		const BranchStudent = models.branch_student;
+
+		// Check branch
+		const branch = await Branch.findById(id);
+		if (!branch) {
+			ctx.body = ResponseHelper.generateNotFoundResponse('Branch');
+			return;
+		}
+
+		// Remove all records first
+		await BranchStudent.deleteMany({ branch_id: id });
+
+		// Add students to branch
+		const uniqStudentIds = _.uniq(student_ids); // unique student ids
+		await Promise.all(
+			uniqStudentIds.map(async sid => {
+				const newBranchStudent = new BranchStudent();
+				newBranchStudent.branch_id = id;
+				newBranchStudent.student_id = sid;
+				await newBranchStudent.save();
+			})
+		);
+
+		ctx.body = ResponseHelper.generateResponse(200, 'Success');
 	}
 };

@@ -21,6 +21,8 @@ module.exports = {
 	'GET /admin/branches/:id': schemas.admin.branches.getBranchById,
 	'POST /admin/branches': schemas.admin.branches.createBranch,
 	'PATCH /admin/branches/:id': schemas.admin.branches.updateBranchById,
+	'GET /admin/branches/:id/students': schemas.admin.branches.getBranchStudents,
+	'PATCH /admin/branches/:id/students': schemas.admin.branches.updateBranchStudents,
 
 	// /admin/students
 	'GET /admin/students': schemas.admin.students.getStudents,
