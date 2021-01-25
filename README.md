@@ -10,6 +10,14 @@ $ docker-compose up
 
 ## Per service initialization (development)
 
+`docker-compose up` must be executed before this type of initialization to initizalize redis and mongo services.
+
+```sh
+$ docker-compose up
+CTRL + C
+$ docker-compose start redis mongo
+```
+
 api-service
 ```sh
 $ cd api-service/
